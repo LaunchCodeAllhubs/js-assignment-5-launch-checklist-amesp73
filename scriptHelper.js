@@ -27,15 +27,24 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   if (validateInput(pilot) === "Empty" || validateInput(pilot) === "Is Not a Number") {
+   let pilotStatus = document.getElementById("pilotStatus");
+   let copilotStatus = document.getElementById("copilotStatus");
+    if (validateInput(pilot) === "Empty" || validateInput(pilot) === "Is a Number") {
+        // Pilot input error, bail early
         alert("Pilot name must be an alphabetical character.");
-   } else if (validateInput(copilot) === "Empty" || validateInput(copilot) === "Is Not a Number") {
+        return;
+   } else if (validateInput(copilot) === "Empty" || validateInput(copilot) === "Is a Number") {
         alert("Copilot name must be an aplhabetical character.");
+        return;
    } else if (validateInput(fuelLevel) === "Is Not a Number") {
         alert("Fuel Level must be a numerical digit.");
+        return;
    } else if (validateInput(cargoLevel) === "Is Not a Number") {
         alert("Cargo Level must be a numerical digit.");
+        return;
    }
+    pilotStatus.innerHTML = `Pilot ${pilot} Ready`;
+    copilotStatus.innerHTML = `Copilot ${copilot} Ready`;
 }
 
 async function myFetch() {

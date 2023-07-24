@@ -29,11 +29,11 @@ function validateInput(testInput) {
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    let pilotStatus = document.getElementById("pilotStatus");
    let copilotStatus = document.getElementById("copilotStatus");
-    if (validateInput(pilot) === "Empty" || validateInput(pilot) === "Is a Number") {
+    if (validateInput(pilot) !== "Is Not a Number") {
         // Pilot input error, bail early
         alert("Pilot name must be an alphabetical character.");
         return;
-   } else if (validateInput(copilot) === "Empty" || validateInput(copilot) === "Is a Number") {
+   } else if (validateInput(copilot) !== "Is Not a Number") {
         alert("Copilot name must be an aplhabetical character.");
         return;
    } else if (validateInput(fuelLevel) === "Is Not a Number") {
